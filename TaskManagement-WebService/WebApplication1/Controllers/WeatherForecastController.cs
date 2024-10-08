@@ -42,7 +42,7 @@ namespace WebApplication1.Controllers
         [HttpPost("add-forecast")]
         public IActionResult AddWeatherForecastData([FromBody] AddWeatherDataRequest data ) 
         {
-            return Ok( new WeatherDataResponse { day = data.Day, Temp = data.Temp});
+            return Ok( new WeatherDataResponse { Day = data.Day, Temp = data.Temp});
         }
 
         [HttpPut("update-forecast/{dayName}/{temp}")]

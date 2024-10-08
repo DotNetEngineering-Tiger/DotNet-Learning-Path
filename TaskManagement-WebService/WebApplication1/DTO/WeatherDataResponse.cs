@@ -2,9 +2,9 @@
 {
     public class WeatherDataResponse
     {
-        public string day {  get; set; }
+        public string Day {  get; set; }
 
-        public DateTime? date { get; set; } = default(DateTime?);
+        public DateTime? Date { get; set; } = default(DateTime?);
 
         public string Temp {  get; set; }
     }
