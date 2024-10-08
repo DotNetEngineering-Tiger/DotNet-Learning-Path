@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication1.DTO;
 
 namespace WebApplication1.Controllers
 {
@@ -28,6 +30,25 @@ namespace WebApplication1.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("day/{dayName}")]
+        public IActionResult GetWeatherForecastByDay(string dayName) 
+        {
+            var temperature = Random.Shared.Next(-20, 55);
+            return Ok(temperature);
+        }
+
+        [HttpPost("add-forecast")]
+        public IActionResult AddWeatherForecastData([FromBody] AddWeatherDataRequest data ) 
+        {
+            return Ok( new WeatherDataResponse { day = data.Day, Temp = data.Temp});
+        }
+
+        [HttpPut("update-forecast/{dayName}/{temp}")]
+        public IActionResult UpdateWeatherForecastData(string day, string temp)
+        {
+            return Ok($"Updated temp for {day} to {temp}");
         }
     }
 }
