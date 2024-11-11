@@ -1,7 +1,7 @@
 ﻿using System;
 namespace WebApplication1.DTO
 {
-	public class TaskStatusDTO
+public class TaskStatusDTO
     {
 		
         public int TaskId { get; set; }
