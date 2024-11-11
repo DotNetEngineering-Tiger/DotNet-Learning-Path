@@ -28,27 +28,18 @@ namespace WebApplication1.Controllers
         [HttpGet("UserID")]
         
         public IActionResult GetUser(string ID)
-        {  
-            
-            return Ok(); 
+        {
+            var user = new UserDTO { };
+            return Ok(user); 
         }
 
         //PUT /api/users/{userId}Update user details.
         [HttpPut("update_users")]
 
-        public IActionResult UserUpdate (string Name, string Bio, string Title)
+        public IActionResult UserUpdate (string ID, string Name, string Bio, string Title)
         {
-           var update_users = new List<UserUpdateDTO>();
+           var update_users = new UserUpdateDTO { } ;
            return Ok(update_users);
         }
-
-        //DELETE /api/users/{userId}: Delete user.
-        [HttpDelete("users")]
-        public IActionResult DeleteUser()
-        {
-            
-            return Ok(); 
-        }
-
     }
 }
