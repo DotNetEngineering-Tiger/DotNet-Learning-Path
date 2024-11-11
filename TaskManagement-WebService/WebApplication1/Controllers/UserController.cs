@@ -34,9 +34,9 @@ namespace WebApplication1.Controllers
         }
 
         //PUT /api/users/{userId}Update user details.
-        [HttpPut("update_users")]
+        [HttpPut("update_users/{id}")]
 
-        public IActionResult UserUpdate (string ID, string Name, string Bio, string Title)
+        public IActionResult UserUpdate (string id,UserCreateDTO update)
         {
            var update_users = new UserUpdateDTO { } ;
            return Ok(update_users);
