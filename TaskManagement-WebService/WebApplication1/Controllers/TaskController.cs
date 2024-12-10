@@ -30,6 +30,15 @@ namespace WebApplication1.Controllers
             return Ok(task);
         }
 
+        //Post 
+        [HttpPost("create_taskdetails/{id}")]
+
+        public IActionResult CreateUpdate(TaskCreateDTO update)
+        {
+            var update_tasks = new TaskUpdateDTO { };
+            return Ok(update_tasks);
+        }
+
         //PUT /api/users/{userId}Update user details.
         [HttpPut("update_taskdetails/{id}")]
 
