@@ -1,5 +1,6 @@
 
 using Microsoft.Azure.Cosmos.Fluent;
+using WebApplication1.Cosmos;
 
 namespace WebApplication1
 {
