@@ -1,19 +1,29 @@
 ﻿
+using Microsoft.Azure.Cosmos;
+using System.Threading;
+
 namespace WebApplication1.Cosmos
 {
-    public class CosmosDb : ICosmosDb
+    public class CosmosDb<TItem> : ICosmosDb<TItem>
     {
-        public Task AddOrUpdate(string containerName, object data)
+        private readonly CosmosClient _client;
+
+        public CosmosDb(CosmosClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<ItemResponse<TItem>> AddOrUpdate(string containerName, TItem data)
+        {
+            return await _client.GetContainer("", containerName).UpsertItemAsync(data).ConfigureAwait(false);
+        }
+
+        public Task<TItem> getItemById(string containerName, string Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task getItemById(string containerName, string Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task GetItems(string containerName)
+        public Task<List<TItem>> GetItems(string containerName)
         {
             throw new NotImplementedException();
         }

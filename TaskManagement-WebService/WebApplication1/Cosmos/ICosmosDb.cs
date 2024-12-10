@@ -1,11 +1,13 @@
-﻿namespace WebApplication1.Cosmos
+﻿using Microsoft.Azure.Cosmos;
+
+namespace WebApplication1.Cosmos
 {
-    public interface ICosmosDb
+    public interface ICosmosDb<TItem>
     {
-        public Task AddOrUpdate(string containerName, Object data);
+        public Task<ItemResponse<TItem>> AddOrUpdate(string containerName, TItem data);
 
-        public Task getItemById(string containerName, string Id);
+        public Task<TItem> getItemById(string containerName, string Id);
 
-        public Task GetItems(string containerName);
+        public Task<List<TItem>> GetItems(string containerName);
     }
 }
