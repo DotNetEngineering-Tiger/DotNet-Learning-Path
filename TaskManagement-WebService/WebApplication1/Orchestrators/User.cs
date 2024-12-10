@@ -5,15 +5,15 @@ namespace WebApplication1.Orchestrators
 {
     public class User : IUser
     {
-        private readonly ICosmosDb _cosmos;
+        private readonly ICosmosDb<UserDTO> _cosmos;
         private readonly string userContainer = "user";
-        public User(ICosmosDb cosmos) 
+        public User(ICosmosDb<UserDTO> cosmos) 
         {
             _cosmos = cosmos;
         }
-        public Task<UserDTO> GetUserByID(string userID)
+        public async Task<UserDTO> GetUserByID(string userID)
         {
-            throw new NotImplementedException();
+            return await _cosmos.getItemById(userContainer, userID);
         }
 
         public Task<List<UserDTO>> GetUsers()

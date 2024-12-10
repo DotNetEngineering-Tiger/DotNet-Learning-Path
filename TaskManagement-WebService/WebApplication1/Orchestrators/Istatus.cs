@@ -9,7 +9,7 @@ namespace WebApplication1.Orchestrators
 
     public interface IStatus
 	{
-        public Task<List<TaskStatusDTO>> GetTasksfileteredbystatus();
+        public Task<List<TaskStatusDTO>> GetTasksfileteredbystatus( string status);
 
         public Task<string> TaskUpdate(TaskUpdateDTO update_status);
 
