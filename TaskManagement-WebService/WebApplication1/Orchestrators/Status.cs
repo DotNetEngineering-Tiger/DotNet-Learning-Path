@@ -22,7 +22,7 @@ namespace WebApplication1.Orchestrators
             throw new NotImplementedException();
         }
 
-        public Task<string> TaskUpdate(TaskUpdateDTO update_status)
+        public Task<string> TaskUpdate(TaskUpdateDTO update_task)
         {
             throw new NotImplementedException();
         }
