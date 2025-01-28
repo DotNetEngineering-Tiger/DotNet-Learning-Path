@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.DTO;
+using WebApplication1.Orchestrators;
 
 namespace WebApplication1.Controllers
 {
@@ -9,12 +10,22 @@ namespace WebApplication1.Controllers
     public class UserController : Controller
     {
         private readonly ILogger<UserController> _logger;
+        private readonly IUser _user;
 
         public UserController(ILogger<UserController> logger)
         {
             _logger = logger;
         }
+
         //POST /api/users: Create a new user.
+        [HttpPost("create_user/{id}")]
+
+        public IActionResult CreateUser(UserCreateDTO createuser)
+        {
+            var create = new UserCreateDTO { };
+            return Ok(createuser);
+        }
+        
         //GET /api/users: Get all users.
         [HttpGet("users")]
         public IActionResult GetAllUsers()
@@ -27,9 +38,13 @@ namespace WebApplication1.Controllers
         //GET /api/users/{userId} Get user details by userId.
         [HttpGet("UserID")]
         
-        public IActionResult GetUser(string ID)
+        public async Task<IActionResult> GetUserAsync(string ID)
         {
-            var user = new UserDTO { };
+            var user = await _user.GetUserByID(ID);
+            if (user is null)
+            {
+                return NotFound();
+            }
             return Ok(user); 
         }
 

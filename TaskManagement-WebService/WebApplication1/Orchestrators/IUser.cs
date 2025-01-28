@@ -3,7 +3,10 @@
 namespace WebApplication1.Orchestrators
 {
     public interface IUser
+
     {
+        public Task<UserDTO> create(UserCreateDTO createuser);
+
         public Task<List<UserDTO>> GetUsers();
 
         public Task<string> UpdateUsers(UserUpdateDTO update_users);
