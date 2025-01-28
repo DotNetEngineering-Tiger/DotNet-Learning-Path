@@ -11,6 +11,12 @@ namespace WebApplication1.Orchestrators
         {
             _cosmos = cosmos;
         }
+
+        public Task<UserDTO> create(UserCreateDTO createuser)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<UserDTO> GetUserByID(string userID)
         {
             return await _cosmos.getItemById(userContainer, userID);
